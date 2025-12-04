@@ -70,7 +70,7 @@ cv-infra/
 
 **Archivos generados**: 11  
 **Líneas de código**: ~600  
-**Recursos AWS**: DynamoDB, Lambda, API Gateway, IAM, CloudWatch
+**Recursos AWS**: DynamoDB, Lambda (con LabRole), API Gateway, CloudWatch
 
 ---
 
@@ -107,11 +107,11 @@ cv-infra/
 
 ### Infraestructura (Terraform)
 - ✅ Compatible con AWS Learner Lab
+- ✅ Usa LabRole existente (no crea roles IAM)
 - ✅ Estado remoto en S3
 - ✅ DynamoDB con PAY_PER_REQUEST
 - ✅ Point-in-time recovery
 - ✅ API Gateway REST
-- ✅ IAM con mínimo privilegio
 - ✅ CloudWatch logging
 - ✅ Validación automática con GitHub Actions
 

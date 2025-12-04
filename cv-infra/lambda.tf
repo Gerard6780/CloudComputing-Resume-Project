@@ -3,7 +3,7 @@
 resource "aws_lambda_function" "cv_handler" {
   filename         = local.lambda_zip
   function_name    = var.lambda_function_name
-  role            = aws_iam_role.lambda_role.arn
+  role            = data.aws_iam_role.lab_role.arn  # Use existing LabRole
   handler         = "handler.lambda_handler"
   source_code_hash = filebase64sha256(local.lambda_zip)
   runtime         = "python3.12"
@@ -20,11 +20,6 @@ resource "aws_lambda_function" "cv_handler" {
     Name        = var.lambda_function_name
     Description = "CV portfolio API handler"
   }
-
-  depends_on = [
-    aws_iam_role_policy_attachment.lambda_dynamodb,
-    aws_iam_role_policy_attachment.lambda_logs
-  ]
 }
 
 # CloudWatch Log Group for Lambda

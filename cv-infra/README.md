@@ -74,10 +74,10 @@ terraform plan
 
 Revisa cuidadosamente los recursos que se crearán:
 - 1 DynamoDB table
-- 1 Lambda function
+- 1 Lambda function (usando LabRole existente)
 - 1 API Gateway REST API
-- 1 IAM role + policies
 - 1 CloudWatch log group
+- Permisos de API Gateway para invocar Lambda
 
 ### Aplicar la infraestructura
 
@@ -137,10 +137,12 @@ Stage: prod
 ### IAM Role
 
 ```hcl
-Nombre: cv-portfolio-function-role
-Policies:
-  - AWSLambdaBasicExecutionRole (AWS Managed)
-  - DynamoDB access (Custom inline)
+Nombre: LabRole (existente en Learner Lab)
+Nota: No se crean roles personalizados
+Permisos incluidos:
+  - Lambda execution (CloudWatch Logs)
+  - DynamoDB full access
+  - API Gateway invocation
 ```
 
 ## 🔧 Configuración de Variables
@@ -240,9 +242,10 @@ cv-infra/
 ### AWS Learner Lab
 
 Este proyecto está diseñado para AWS Learner Lab:
-- Usa el rol `LabRole` predefinido
+- Usa el rol `LabRole` predefinido (no crea roles nuevos)
+- LabRole tiene permisos para Lambda, DynamoDB, API Gateway, CloudWatch
 - No requiere configuración de credenciales adicionales
-- Compatible con las limitaciones de Learner Lab
+- Compatible con las limitaciones de Learner Lab (no se pueden crear roles IAM)
 
 ### Mejores Prácticas
 

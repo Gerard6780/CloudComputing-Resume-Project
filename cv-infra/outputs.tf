@@ -18,6 +18,11 @@ output "lambda_function_arn" {
   value       = aws_lambda_function.cv_handler.arn
 }
 
+output "iam_role_used" {
+  description = "IAM role used by Lambda (LabRole from Learner Lab)"
+  value       = data.aws_iam_role.lab_role.name
+}
+
 output "dynamodb_table_name" {
   description = "Name of the DynamoDB table"
   value       = aws_dynamodb_table.curriculums.name
