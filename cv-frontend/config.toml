@@ -1,0 +1,52 @@
+baseURL = "https://example.com/"
+languageCode = "es-es"
+title = "Mi Portfolio Profesional"
+theme = "hugo-creative-portfolio-theme"
+
+# Enable emoji support
+enableEmoji = true
+
+# Pagination
+paginate = 6
+
+[params]
+  # Site description for SEO
+  description = "Portfolio profesional de desarrollo web y cloud computing"
+  
+  # Author information (placeholder data)
+  author = "Desarrollador Profesional"
+  
+  # Navigation
+  [params.navigation]
+    brand = "Portfolio"
+    
+    [[params.navigation.links]]
+      name = "Inicio"
+      url = "/"
+      weight = 1
+    
+    [[params.navigation.links]]
+      name = "Proyectos"
+      url = "/projects/"
+      weight = 2
+    
+    [[params.navigation.links]]
+      name = "Contacto"
+      url = "#contact"
+      weight = 3
+
+  # Social media links (placeholder)
+  [params.social]
+    github = "https://github.com"
+    linkedin = "https://linkedin.com"
+    email = "contact@example.com"
+
+  # Footer
+  [params.footer]
+    copyright = "© 2024 Portfolio Profesional. Todos los derechos reservados."
+
+# Markup settings
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
